@@ -41,3 +41,5 @@ function left(value) {
 function right(value) {
   return new Right(value);
 }
+
+export { Either, left, right };
