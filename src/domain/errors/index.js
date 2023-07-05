@@ -1,5 +1,6 @@
-export const errors = {
+export default {
   profile: {
     invalidProfile: 'Invalid profile',
   },
 };
+

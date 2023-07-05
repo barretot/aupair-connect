@@ -1,26 +1,16 @@
-/* domain/post/post.js */
-const buildMakePost =
-  ({ Id, left, right, errors }) =>
-  ({ id = Id.makeId(), opportunity, aupair, user } = {}) => {
-    const { error } = validator({
-      id,
-      opportunity,
-      aupair,
-      user,
-    });
+import buildMakeProfile from './profile';
+import Id from '../../infrastructure/post/Id';
+import validator from '../../infrastructure/post/validator';
+import errors from '../errors';
+import { Either, left, right } from '../../shared/either/index';
 
-    if (error) {
-      return left(errors.profile.invalidProfile);
-    }
+const makeProfile = buildMakeProfile({
+  Id,
+  validator,
+  Either,
+  left,
+  right,
+  errors,
+});
 
-    return right(
-      Object.freeze({
-        getId: () => id,
-        getOpportunity: () => opportunity,
-        getAupair: () => aupair,
-        getUser: () => user,
-      }),
-    );
-  };
-
-module.exports = buildMakePost;
+export default makeProfile;
