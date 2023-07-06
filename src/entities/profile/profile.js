@@ -32,4 +32,4 @@ const buildMakeProfile = ({
   );
 };
 
-export default buildMakeProfile;
+module.exports = buildMakeProfile;
