@@ -1,5 +1,4 @@
-/* application/post/add-post.js */
-const makeProfile = require('../../domain/profile/index');
+const makeProfile = require('../../entities/profile/index');
 
 const makeInsertProfile = ({
   profileDb,
@@ -15,4 +14,4 @@ const makeInsertProfile = ({
   });
 };
 
-export default makeInsertProfile;
+module.exports = makeInsertProfile;
