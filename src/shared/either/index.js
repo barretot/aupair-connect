@@ -42,4 +42,4 @@ function right(value) {
   return new Right(value);
 }
 
-export { Either, left, right };
+module.exports = { Either, left, right };
