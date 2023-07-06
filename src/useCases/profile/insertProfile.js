@@ -2,15 +2,14 @@ const makeProfile = require('../../entities/profile/index');
 
 const makeInsertProfile = ({
   profileDb,
-}) => (profileParams) => {
-  const post = makeProfile(profileParams);
+}) => async (profileParams) => {
+  const post = await makeProfile(profileParams);
 
   return profileDb.insert({
     id: post.getId(),
-    title: post.getTitle(),
-    description: post.getDescription(),
-    image: post.getImage(),
-    tags: post.getTags(),
+    opportunity: post.getOpportunity(),
+    aupair: post.getAupair(),
+    user: post.getUser(),
   });
 };
 

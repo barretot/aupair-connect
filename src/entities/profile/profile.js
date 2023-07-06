@@ -4,32 +4,29 @@ const buildMakeProfile = ({
   left,
   right,
   errors,
-}) => ({
+}) => async ({
   id = Id.makeId(),
   opportunity,
   aupair,
   user,
 } = {}) => {
-  const { error } = validator({
+  const isValid = await validator({
     id,
     opportunity,
     aupair,
     user,
   });
 
-  if (error) {
+  if (!isValid) {
     return left(errors.profile.invalidProfile);
   }
-
-  // Imutabilidade
-  return right(
-    Object.freeze({
-      getId: () => id,
-      getOpportunity: () => opportunity,
-      getAupair: () => aupair,
-      getUser: () => user,
-    }),
-  );
+  return Object.freeze({
+    getId: () => id,
+    getOpportunity: () => opportunity,
+    getAupair: () => aupair,
+    getUser: () => user,
+  });
 };
 
 module.exports = buildMakeProfile;
+

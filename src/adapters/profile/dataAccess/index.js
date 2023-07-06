@@ -6,4 +6,4 @@ const makeProfileDb = require('./profileDb');
 // Injection
 const profileDb = makeProfileDb({ makeDb });
 
-module.export = profileDb;
+module.exports = profileDb;

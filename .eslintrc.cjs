@@ -22,6 +22,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'import/no-unresolved': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/no-import-module-exports': 'off',
     'max-classes-per-file': 'off',

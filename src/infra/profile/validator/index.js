@@ -1,16 +1,13 @@
-const Joi = require('joi');
-
 const postSchema = require('./profileSchema');
 
-const validator = (payload) => {
-  const { error } = Joi.validate(payload, postSchema, { abortEarly: false });
-  if (error) {
-    const message = error.details.map((el) => el.message).join('\n');
-    return {
-      error: message,
-    };
+const validator = async (payload) => {
+  const checkSchema = await postSchema.isValid(payload);
+
+  if (!checkSchema) {
+    return { error: 'Error schema' };
   }
-  return true;
+
+  return checkSchema;
 };
 
 module.exports = validator;

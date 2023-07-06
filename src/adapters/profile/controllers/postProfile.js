@@ -11,15 +11,8 @@ const makePostProfile = ({ insertProfile }) => async (httpRequest) => {
     const posted = await insertProfile({
       ...profileParam,
     });
-    return right({
-      headers: {
-        'Content-Type': 'application/json',
-        'Last-Modified': new Date(posted.modifiedOn).toUTCString(),
-      },
-      statusCode: 201,
-      body: { posted },
 
-    });
+    return posted;
   } catch (e) {
     return left({
       headers: {
